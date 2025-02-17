@@ -72,17 +72,19 @@ const TrainDepartures = () => {
           </h1>
         </div>
       </nav>
-      <h1>Next 5 Train Departures</h1>
+      <div style={
+        { marginTop: '40px' }
+      }></div>
       {error && <p>Error: {error}</p>}
       <ul>
         {trains.map((train, index) => (
           <React.Fragment key={index}>
             <li>
               <div>
-                <strong>Departure Time:</strong> {formatDateTime(train.legs[0].origin.departureTimeEstimated)}  <strong>Platform:</strong> {getStationAndPlatform(train.legs[0].origin.name).platform}
+                <strong>Departure Time:</strong> {formatDateTime(train.legs[0].origin.departureTimeEstimated)}  <strong>Departs from:</strong> {getStationAndPlatform(train.legs[0].origin.name).platform}
               </div>
               <div>
-                <strong>Arrival Time:</strong> {formatDateTime(train.legs[0].destination.arrivalTimeEstimated)}  <strong>Platform:</strong> {getStationAndPlatform(train.legs[0].destination.name).platform}
+                <strong>Arrival Time:</strong> {formatDateTime(train.legs[0].destination.arrivalTimeEstimated)}  <strong>Arrives to:</strong> {getStationAndPlatform(train.legs[0].destination.name).platform}
               </div>
               <div>
                 <strong>Train Type:</strong> {train.legs[0].transportation.disassembledName}

@@ -5,7 +5,6 @@ import TrainDepartures from './TrainDepartures';
 function App() {
   return (
     <div className="App">
-      
       <main>
         <TrainDepartures />
       </main>
