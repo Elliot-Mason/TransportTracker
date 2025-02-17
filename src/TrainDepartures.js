@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import trainIcon from './trainIcon.png';
 
 const TrainDepartures = () => {
   const [trains, setTrains] = useState([]);
@@ -46,7 +47,9 @@ const TrainDepartures = () => {
     <div>
       <h1>Next 5 Train Departures</h1>
       {error && <p>Error: {error}</p>}
-      <button onClick={swapStations}>Swap Origin and Destination</button>
+      <button onClick={swapStations} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
+        <img src={trainIcon} alt="Swap Origin and Destination" style={{ width: '50px', height: '50px' }} />
+      </button> 
       <ul>
         {trains.map((train, index) => (
           <li key={index}>
