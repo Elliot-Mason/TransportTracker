@@ -30,6 +30,12 @@ const TrainDepartures = () => {
 
   useEffect(() => {
     fetchTrains(nameOrigin, nameDestination);
+
+    const interval = setInterval(() => {
+      fetchTrains(nameOrigin, nameDestination);
+    }, 60000); // 60000 milliseconds = 1 minute
+
+    return () => clearInterval(interval); // Clear interval on component unmount
   }, [nameOrigin, nameDestination]);
 
   const swapStations = () => {
@@ -73,16 +79,10 @@ const TrainDepartures = () => {
           <React.Fragment key={index}>
             <li>
               <div>
-                <strong>Origin:</strong> {getStationAndPlatform(train.legs[0].origin.name).station}
+                <strong>Departure Time:</strong> {formatDateTime(train.legs[0].origin.departureTimeEstimated)}  <strong>Platform:</strong> {getStationAndPlatform(train.legs[0].origin.name).platform}
               </div>
               <div>
-                <strong>Departure Time:</strong> {formatDateTime(train.legs[0].origin.departureTimeEstimated)} - <strong>Platform:</strong> {getStationAndPlatform(train.legs[0].origin.name).platform}
-              </div>
-              <div>
-                <strong>Destination:</strong> {getStationAndPlatform(train.legs[0].destination.name).station}
-              </div>
-              <div>
-                <strong>Arrival Time:</strong> {formatDateTime(train.legs[0].destination.arrivalTimeEstimated)} - <strong>Platform:</strong> {getStationAndPlatform(train.legs[0].destination.name).platform}
+                <strong>Arrival Time:</strong> {formatDateTime(train.legs[0].destination.arrivalTimeEstimated)}  <strong>Platform:</strong> {getStationAndPlatform(train.legs[0].destination.name).platform}
               </div>
               <div>
                 <strong>Train Type:</strong> {train.legs[0].transportation.disassembledName}
