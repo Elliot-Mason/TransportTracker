@@ -37,3 +37,10 @@ ul {
 li {
   margin-bottom: 10px; /* Add some space between list items */
 }
+
+hr.solid {
+  border-top: 1px solid #ddd9d9;
+  border-radius: 10px;
+  width: 50%; /* Set the width to 50% */
+  margin: 20px auto; /* Center the divider */
+}

@@ -44,22 +44,52 @@ const TrainDepartures = () => {
     return `${hours}:${minutes}`;
   };
 
+  const getStationAndPlatform = (name) => {
+    const parts = name.split(', ');
+    const station = parts[0];
+    const platform = parts[1];
+    return { station, platform };
+  };
+
   return (
     <div>
       <nav className="navbar">
-        <h1 className="station-name">{trains.length > 0 && trains[0].legs[0].origin.name}</h1>
-        <button onClick={swapStations} className="swap-button">
-          <img src={trainIcon} alt="Swap Origin and Destination" className="swap-icon" />
-        </button>
-        <h1 className='station-name'>{trains.length > 0 && trains[0].legs[0].destination.name}</h1>
+        <div className="station-container">
+          <h1 className="station-name">
+            {trains.length > 0 && getStationAndPlatform(trains[0].legs[0].origin.name).station}
+          </h1>
+          <button onClick={swapStations} className="swap-button">
+            <img src={trainIcon} alt="Swap Origin and Destination" className="swap-icon" />
+          </button>
+          <h1 className="station-name">
+            {trains.length > 0 && getStationAndPlatform(trains[0].legs[0].destination.name).station}
+          </h1>
+        </div>
       </nav>
       <h1>Next 5 Train Departures</h1>
       {error && <p>Error: {error}</p>}
       <ul>
         {trains.map((train, index) => (
-          <li key={index}>
-            Departure Time: {formatDateTime(train.legs[0].origin.departureTimeEstimated)} - Arrival Time: {formatDateTime(train.legs[0].destination.arrivalTimeEstimated)}
-          </li>
+          <React.Fragment key={index}>
+            <li>
+              <div>
+                <strong>Origin:</strong> {getStationAndPlatform(train.legs[0].origin.name).station}
+              </div>
+              <div>
+                <strong>Departure Time:</strong> {formatDateTime(train.legs[0].origin.departureTimeEstimated)} - <strong>Platform:</strong> {getStationAndPlatform(train.legs[0].origin.name).platform}
+              </div>
+              <div>
+                <strong>Destination:</strong> {getStationAndPlatform(train.legs[0].destination.name).station}
+              </div>
+              <div>
+                <strong>Arrival Time:</strong> {formatDateTime(train.legs[0].destination.arrivalTimeEstimated)} - <strong>Platform:</strong> {getStationAndPlatform(train.legs[0].destination.name).platform}
+              </div>
+              <div>
+                <strong>Train Type:</strong> {train.legs[0].transportation.disassembledName}
+              </div>
+            </li>
+            {index < trains.length - 1 && <hr className="solid" />}
+          </React.Fragment>
         ))}
       </ul>
     </div>
