@@ -4,24 +4,36 @@ import axios from 'axios';
 const TrainDepartures = () => {
   const [trains, setTrains] = useState([]);
   const [error, setError] = useState(null);
+  const [nameOrigin, setNameOrigin] = useState('10101252'); // Penrith Station
+  const [nameDestination, setNameDestination] = useState('10101100'); // Central Station
+
+  const fetchTrains = async (origin, destination) => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/trains', {
+        params: {
+          name_origin: origin,
+          name_destination: destination,
+        },
+      });
+      const data = response.data;
+      console.log('Train Data:', data);
+
+      // Access the first 5 train departures
+      const trainDepartures = data.slice(0, 5);
+      setTrains(trainDepartures);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   useEffect(() => {
-    const fetchTrains = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/trains');
-        const data = response.data;
-        console.log('Train Data:', data);
+    fetchTrains(nameOrigin, nameDestination);
+  }, [nameOrigin, nameDestination]);
 
-        // Access the first 5 train departures
-        const trainDepartures = data.slice(0, 5);
-        setTrains(trainDepartures);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-
-    fetchTrains();
-  }, []);
+  const swapStations = () => {
+    setNameOrigin(nameDestination);
+    setNameDestination(nameOrigin);
+  };
 
   const formatDateTime = (dateTime) => {
     const date = new Date(dateTime);
@@ -34,6 +46,7 @@ const TrainDepartures = () => {
     <div>
       <h1>Next 5 Train Departures</h1>
       {error && <p>Error: {error}</p>}
+      <button onClick={swapStations}>Swap Origin and Destination</button>
       <ul>
         {trains.map((train, index) => (
           <li key={index}>

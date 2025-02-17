@@ -10,6 +10,12 @@ app.use(cors());
 
 app.get('/api/trains', async (req, res) => {
     try {
+        const { name_origin, name_destination } = req.query;
+
+        if (!name_origin || !name_destination) {
+            return res.status(400).json({ error: 'Missing required query parameters: name_origin and name_destination' });
+        }
+
         const now = new Date();
         const itdDate = now.toISOString().split('T')[0].replace(/-/g, ''); // Format: YYYYMMDD
         const itdTime = now.toTimeString().split(' ')[0].replace(/:/g, '').slice(0, 4); // Format: HHMM
@@ -25,9 +31,9 @@ app.get('/api/trains', async (req, res) => {
                     itdDate: itdDate,
                     itdTime: itdTime,
                     type_origin: 'any',
-                    name_origin: '10101252',
+                    name_origin: name_origin,
                     type_destination: 'any',
-                    name_destination: '10101100',
+                    name_destination: name_destination,
                     calcNumberOfTrips: 6,
                     TfNSWTR: true,
                     version: '10.2.1.42',
