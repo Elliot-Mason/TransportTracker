@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import trainIcon from './trainIcon.png';
+import './TrainDepartures.css'; // Import the CSS file
 
 const TrainDepartures = () => {
   const [trains, setTrains] = useState([]);
@@ -45,15 +46,19 @@ const TrainDepartures = () => {
 
   return (
     <div>
+      <nav className="navbar">
+        <h1 className="station-name">{trains.length > 0 && trains[0].legs[0].origin.name}</h1>
+        <button onClick={swapStations} className="swap-button">
+          <img src={trainIcon} alt="Swap Origin and Destination" className="swap-icon" />
+        </button>
+        <h1 className='station-name'>{trains.length > 0 && trains[0].legs[0].destination.name}</h1>
+      </nav>
       <h1>Next 5 Train Departures</h1>
       {error && <p>Error: {error}</p>}
-      <button onClick={swapStations} style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}>
-        <img src={trainIcon} alt="Swap Origin and Destination" style={{ width: '50px', height: '50px' }} />
-      </button> 
       <ul>
         {trains.map((train, index) => (
           <li key={index}>
-            Origin: {train.legs[0].origin.name} Departure Time: {formatDateTime(train.legs[0].origin.departureTimeEstimated)} - Destination: {train.legs[0].destination.name} Arrival Time: {formatDateTime(train.legs[0].destination.arrivalTimeEstimated)}
+            Departure Time: {formatDateTime(train.legs[0].origin.departureTimeEstimated)} - Arrival Time: {formatDateTime(train.legs[0].destination.arrivalTimeEstimated)}
           </li>
         ))}
       </ul>
