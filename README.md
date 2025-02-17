@@ -2,11 +2,21 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Running the program
+
 ### `.env file`
 
 You will need to create a .env file in the project's main direcotry and include in it your API key in the format
 
 API_KEY=your api key here
+
+### `Starting the server`
+
+Use: node server.js
+
+### `Starting the react app`
+
+Use: npm run start
 
 ## Available Scripts
 
