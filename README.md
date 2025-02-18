@@ -18,6 +18,12 @@ Use: node server.js
 
 Use: npm run start
 
+### `finding a Station/stop id`
+
+To find the id needed for a specific stop see here: https://opendata.transport.nsw.gov.au/data/dataset/trip-planner-apis/resource/97c25c58-a246-4632-bed9-232337cb2f4d?inner_span=True
+
+###
+
 ## Available Scripts
 
 In the project directory, you can run:

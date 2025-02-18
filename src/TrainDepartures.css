@@ -44,3 +44,53 @@ hr.solid {
   width: 50%; /* Set the width to 50% */
   margin: 20px auto; /* Center the divider */
 }
+
+#support for futrue icon implementation
+.icon {
+  color: white;
+  background: #777;
+  border-radius: 12px;
+  border: 2px solid white;
+  height: 24px;
+  width: 24px;
+  margin-left: -12px;
+  margin-top: -12px;
+  text-align: center;
+  line-height: 22px;
+  font-weight: bold;
+}
+
+#support for future line specific colour scheme
+.sydneytrains.icon.line-T1 {
+  background: #F99D1C;
+}
+
+.sydneytrains.icon.line-T2 {
+  background: #0098cd;
+}
+
+.sydneytrains.icon.line-T3 {
+  background: #f37021;
+}
+
+.sydneytrains.icon.line-T4 {
+  background: #005aa3;
+}
+
+.sydneytrains.icon.line-T5 {
+  background: #c4258f;
+}
+
+.sydneytrains.icon.line-T7 {
+  background: #6f818e;
+}
+
+.sydneytrains.icon.line-T8 {
+  background: #00954c;
+}
+
+.sydneytrains.icon.line-T9 {
+  background: #d11f2f;
+}
+
+
