@@ -1,5 +1,5 @@
 import React from 'react';
-import trainIcon from '../../assets/trainIcon.png';
+import trainIcon from '../../Assets/trainIcon.png';
 
 const StationHeader = ({ origin, destination, swapStations }) => {
   return (
