@@ -6,7 +6,7 @@ import useFetchTrains from './Hooks/useFetchTrains';
 
 const TrainDepartures = () => {
   const [nameOrigin, setNameOrigin] = useState('10101252'); // Penrith Station
-  const [nameDestination, setNameDestination] = useState('10101109'); // Central Station
+  const [nameDestination, setNameDestination] = useState('10101100'); // Central Station
   const { trains, error } = useFetchTrains(nameOrigin, nameDestination);
 
   const swapStations = () => {
