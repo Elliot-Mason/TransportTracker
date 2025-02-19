@@ -22,25 +22,21 @@ const TrainItem = ({ train, formatDateTime, getStationAndPlatform }) => {
         const routeIconClass = getRouteIcon(routeType);
 
         return (
-          <div key={index} className="leg-container">
-            {routeIconClass && (
-              <div className={`icon-container ${routeIconClass}`}>
-                <span className={`icon sydneytrains ${routeIconClass}`}>{routeType}</span>
+          <div key={index}>
+            <div>
+              <strong>Departure Time:</strong> {formatDateTime(leg.origin.departureTimeEstimated)} - <strong>Platform:</strong> {getStationAndPlatform(leg.origin.name).platform}
+            </div>
+            <div>
+              <strong>Arrival Time:</strong> {formatDateTime(leg.destination.arrivalTimeEstimated)} - <strong>Platform:</strong> {getStationAndPlatform(leg.destination.name).platform}
+            </div>
+            <div>
+              {routeIconClass ? <span className={`icon sydneytrains ${routeIconClass}`}>{routeType}</span> : routeType}
+            </div>
+            {index < train.legs.length - 1 && (
+              <div>
+                <strong>Transfer at:</strong> {getStationAndPlatform(leg.destination.name).station}
               </div>
             )}
-            <div className="leg-info">
-              <div>
-                <strong>Departure Time:</strong> {formatDateTime(leg.origin.departureTimeEstimated)} - <strong>Platform:</strong> {getStationAndPlatform(leg.origin.name).platform}
-              </div>
-              <div>
-                <strong>Arrival Time:</strong> {formatDateTime(leg.destination.arrivalTimeEstimated)} - <strong>Platform:</strong> {getStationAndPlatform(leg.destination.name).platform}
-              </div>
-              {index < train.legs.length - 1 && (
-                <div>
-                  <strong>Transfer at:</strong> {getStationAndPlatform(leg.destination.name).station}
-                </div>
-              )}
-            </div>
           </div>
         );
       })}

@@ -51,8 +51,8 @@ hr.solid {
   background: #777;
   border-radius: 12px;
   border: 2px solid white;
-  height: 24px;
-  width: 24px;
+  height: 32px;
+  width: 32px;
   text-align: center;
   line-height: 22px;
   font-weight: bold;
@@ -91,22 +91,5 @@ hr.solid {
   background: #d11f2f;
 }
 
-.leg-container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.icon-container {
-  flex: 0 0 50px; /* Fixed width for the icon container */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 10px;
-}
-
-.leg-info {
-  flex: 1; /* Take up the remaining space */
-}
 
 
