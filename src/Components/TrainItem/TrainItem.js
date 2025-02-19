@@ -12,6 +12,7 @@ const TrainItem = ({ train, formatDateTime, getStationAndPlatform }) => {
       T8: "line-T8",
       T9: "line-T9",
       BMT: "line-Intercity",
+      SCO: "line-T4", // Use T4 line CSS for SCO
     };
     return routeMap[routeType] || null;
   };
@@ -29,7 +30,7 @@ const TrainItem = ({ train, formatDateTime, getStationAndPlatform }) => {
                 {routeIconClass && (
                   <div className={`icon-container ${routeIconClass}`}>
                     <span className={`icon sydneytrains ${routeIconClass}`}>
-                      {routeType === "BMT" ? "I" : routeType}
+                      {routeType === "BMT" ? "I" : routeType === "SCO" ? "SCO" : routeType}
                     </span>
                   </div>
                 )}
