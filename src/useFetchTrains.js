@@ -26,7 +26,7 @@ const useFetchTrains = (origin, destination) => {
 
     const interval = setInterval(() => {
       fetchTrains(origin, destination);
-    }, 60000);
+    }, 30000);
 
     return () => clearInterval(interval);
   }, [origin, destination]);

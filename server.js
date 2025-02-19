@@ -50,7 +50,7 @@ app.get('/api/trains', async (req, res) => {
 
         // Construct the full request URL
         const requestUrl = `https://api.transport.nsw.gov.au/v1/tp/trip?${new URLSearchParams(requestConfig.params).toString()}`;
-        console.log('Trips Request URL:', requestUrl);
+        //console.log('Trips Request URL:', requestUrl);
 
         const response = await axios.get('https://api.transport.nsw.gov.au/v1/tp/trip', requestConfig);
         const trains = response.data.journeys.slice(0, 5);
@@ -62,7 +62,7 @@ app.get('/api/trains', async (req, res) => {
 });
 
 // API endpoint to fetch station data
-api.get('/api/stations', async (req, res) => {
+app.get('/api/stations', async (req, res) => {
     try {
         const { station_name } = req.query;
         if (!station_name) {
@@ -92,8 +92,6 @@ api.get('/api/stations', async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch station data' });
     }
 });
-
-
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
