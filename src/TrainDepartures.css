@@ -105,6 +105,8 @@ hr.solid {
   justify-content: center;
   align-items: center;
   margin: 10px 0; /* Add some space above and below the transfer info */
+  max-width: 250px; /* Set a maximum width for the transfer info */
+  text-align: center; /* Center the text within the transfer info */
 }
 
 
