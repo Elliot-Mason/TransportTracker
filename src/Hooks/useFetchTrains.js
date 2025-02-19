@@ -26,9 +26,9 @@ const useFetchTrains = (origin, destination) => {
 
     const interval = setInterval(() => {
       fetchTrains(origin, destination);
-    }, 30000);
+    }, 60000); // 60000 milliseconds = 1 minute
 
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Clear interval on component unmount
   }, [origin, destination]);
 
   return { trains, error };
