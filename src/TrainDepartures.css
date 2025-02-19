@@ -1,22 +1,3 @@
-.navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #F99D1C;
-  padding: 10px;
-}
-
-.station-container {
-  display: flex;
-  align-items: center;
-}
-
-.station-name {
-  margin: 0 20px;
-  color: black; /* Change font color to black */
-  text-align: center;
-}
-
 .swap-button {
   background: none;
   border: none;
