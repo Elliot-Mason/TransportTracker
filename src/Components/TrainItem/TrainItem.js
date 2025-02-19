@@ -1,8 +1,6 @@
 import React from 'react';
 
 const TrainItem = ({ train, formatDateTime, getStationAndPlatform }) => {
-  const routeType = train.legs[0].transportation.disassembledName;
-
   const getRouteIcon = (routeType) => {
     const routeMap = {
       'T1': 'line-T1',
@@ -17,19 +15,35 @@ const TrainItem = ({ train, formatDateTime, getStationAndPlatform }) => {
     return routeMap[routeType] || null;
   };
 
-  const routeIconClass = getRouteIcon(routeType);
-
   return (
     <li>
-      <div>
-        <strong>Departure Time:</strong> {formatDateTime(train.legs[0].origin.departureTimeEstimated)} - <strong>Platform:</strong> {getStationAndPlatform(train.legs[0].origin.name).platform}
-      </div>
-      <div>
-        <strong>Arrival Time:</strong> {formatDateTime(train.legs[0].destination.arrivalTimeEstimated)} - <strong>Platform:</strong> {getStationAndPlatform(train.legs[0].destination.name).platform}
-      </div>
-      <div>
-        {routeIconClass ? <span className={`icon sydneytrains ${routeIconClass}`}>{routeType}</span> : routeType}
-      </div>
+      {train.legs.map((leg, index) => {
+        const routeType = leg.transportation.disassembledName;
+        const routeIconClass = getRouteIcon(routeType);
+
+        return (
+          <div key={index} className="leg-container">
+            {routeIconClass && (
+              <div className={`icon-container ${routeIconClass}`}>
+                <span className={`icon sydneytrains ${routeIconClass}`}>{routeType}</span>
+              </div>
+            )}
+            <div className="leg-info">
+              <div>
+                <strong>Departure Time:</strong> {formatDateTime(leg.origin.departureTimeEstimated)} - <strong>Platform:</strong> {getStationAndPlatform(leg.origin.name).platform}
+              </div>
+              <div>
+                <strong>Arrival Time:</strong> {formatDateTime(leg.destination.arrivalTimeEstimated)} - <strong>Platform:</strong> {getStationAndPlatform(leg.destination.name).platform}
+              </div>
+              {index < train.legs.length - 1 && (
+                <div>
+                  <strong>Transfer at:</strong> {getStationAndPlatform(leg.destination.name).station}
+                </div>
+              )}
+            </div>
+          </div>
+        );
+      })}
     </li>
   );
 };

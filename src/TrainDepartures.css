@@ -51,10 +51,8 @@ hr.solid {
   background: #777;
   border-radius: 12px;
   border: 2px solid white;
-  height: 32px;
-  width: 32px;
-  margin-left: -12px;
-  margin-top: -12px;
+  height: 24px;
+  width: 24px;
   text-align: center;
   line-height: 22px;
   font-weight: bold;
@@ -91,6 +89,24 @@ hr.solid {
 
 .sydneytrains.icon.line-T9 {
   background: #d11f2f;
+}
+
+.leg-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon-container {
+  flex: 0 0 50px; /* Fixed width for the icon container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.leg-info {
+  flex: 1; /* Take up the remaining space */
 }
 
 
