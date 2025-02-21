@@ -1,12 +1,18 @@
-// filepath: /c:/Users/Elliot/Desktop/Desktop/Dev/Personal/nsw-transport-gtfs-react/src/HomePage.js
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import SearchForm from './Components/SearchForm/SearchForm';
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
+  const handleSearch = (originId, destinationId) => {
+    navigate(`/departures?origin=${originId}&destination=${destinationId}`);
+  };
+
   return (
     <div>
       <h1>Welcome to the Train Departures App</h1>
-      <Link to="/departures">Go to Train Departures</Link>
+      <SearchForm onSearch={handleSearch} />
     </div>
   );
 };
