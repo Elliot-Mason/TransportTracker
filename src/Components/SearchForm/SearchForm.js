@@ -1,16 +1,20 @@
 import React, { useState } from 'react';
+import Fuse from 'fuse.js';
 import StationInformation from '../../Assets/StationInformation.json';
 
 const SearchForm = ({ onSearch }) => {
   const [origin, setOrigin] = useState('');
   const [destination, setDestination] = useState('');
 
+  const fuse = new Fuse(StationInformation.records, {
+    keys: ['3'], // diva_common_name_without_locality field
+    threshold: 0.3, // Adjust the threshold for fuzzy matching
+  });
+
   const handleSearch = () => {
     const findStationId = (name) => {
-      const station = StationInformation.records.find((record) =>
-        record[3].toLowerCase().includes(name.toLowerCase())
-      );
-      return station ? station[1] : null;
+      const result = fuse.search(name);
+      return result.length > 0 ? result[0].item[1] : null; // diva_efa_id field
     };
 
     const originId = findStationId(origin);
