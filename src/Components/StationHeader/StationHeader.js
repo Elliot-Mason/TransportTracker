@@ -1,10 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import trainIcon from '../../Assets/trainIcon.png';
 import './StationHeader.css';
 
 const StationHeader = ({ origin, destination, swapStations }) => {
+  const navigate = useNavigate();
+
   return (
     <nav className="navbar">
+      <button onClick={() => navigate('/')} className="home-button">
+        Home
+      </button>
       <div className="station-container">
         <div className="station-name-container">
           <h1 className="station-name">{origin}</h1>
