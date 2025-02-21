@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './TrainDepartures.css'; // Import the CSS file
 import StationHeader from './Components/StationHeader/StationHeader';
+import SearchForm from './Components/SearchForm/SearchForm';
 import TrainList from './Components/TrainList/TrainList';
 import useFetchTrains from './Hooks/useFetchTrains';
 
-const TrainDepartures = () => {
-  const [nameOrigin, setNameOrigin] = useState('10101252'); // Penrith Station
-  const [nameDestination, setNameDestination] = useState('10101100'); // Central Station
-  const { trains, error } = useFetchTrains(nameOrigin, nameDestination);
+const useQuery = () => {
+  return new URLSearchParams(useLocation().search);
+};
 
-  const swapStations = () => {
-    setNameOrigin(nameDestination);
-    setNameDestination(nameOrigin);
-  };
+const TrainDepartures = () => {
+  const query = useQuery();
+  const navigate = useNavigate();
+  const origin = query.get('origin');
+  const destination = query.get('destination');
+  const { trains, error } = useFetchTrains(origin, destination);
 
   const formatDateTime = (dateTime) => {
     const date = new Date(dateTime);
@@ -33,6 +36,10 @@ const TrainDepartures = () => {
     return getStationAndPlatform(lastLeg.destination.name).station;
   };
 
+  const swapStations = () => {
+    navigate(`/departures?origin=${destination}&destination=${origin}`);
+  };
+
   return (
     <div>
       <StationHeader
@@ -40,6 +47,9 @@ const TrainDepartures = () => {
         destination={trains.length > 0 ? getLastLegDestination(trains[0].legs) : ''}
         swapStations={swapStations}
       />
+      <SearchForm onSearch={(originId, destinationId) => {
+        window.location.href = `/departures?origin=${originId}&destination=${destinationId}`;
+      }} />
       <div style={{ marginTop: '40px' }}></div>
       {error && <p>Error: {error}</p>}
       <TrainList trains={trains} formatDateTime={formatDateTime} getStationAndPlatform={getStationAndPlatform} />
