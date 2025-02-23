@@ -7,11 +7,11 @@ const HomePage = () => {
   const [showSearchForm, setShowSearchForm] = useState(false);
 
   const handleSearch = (originId, destinationId) => {
-    navigate(`/departures?origin=${originId}&destination=${destinationId}`);
+    navigate(`/TrainDepartures?origin=${originId}&destination=${destinationId}`);
   };
 
   const handleTrainClick = () => {
-    setShowSearchForm(true);
+    setShowSearchForm((prevShowSearchForm) => !prevShowSearchForm);
   };
 
   return (
