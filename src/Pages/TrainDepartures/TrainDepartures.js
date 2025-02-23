@@ -1,10 +1,10 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './TrainDepartures.css'; // Import the CSS file
-import StationHeader from './Components/StationHeader/StationHeader';
-import SearchForm from './Components/SearchForm/SearchForm';
-import TrainList from './Components/TrainList/TrainList';
-import useFetchTrains from './Hooks/useFetchTrains';
+import StationHeader from '../../Components/StationHeader/StationHeader';
+import SearchForm from '../../Components/SearchForm/SearchForm';
+import TrainList from '../../Components/TrainList/TrainList';
+import useFetchTrains from '../../Hooks/useFetchTrains';
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import SearchForm from './Components/SearchForm/SearchForm';
-import { Button } from '@material-ui/core';
+import SearchForm from '../../Components/SearchForm/SearchForm';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -21,13 +20,10 @@ const HomePage = () => {
       <div>
       <button onClick={handleSearch}>General Search</button>
       <button onClick={handleTrainClick}> Train </button>
-        {/*
-        implement these functions later
-        
-        <Button> Bus </Button>
-        <Button> LightRail </Button>
-        <Button> Ferry </Button>
-        <Button> Metro </Button> */}
+      <button> Bus </button>
+      <button> LightRail </button>
+      <button> Ferry </button>
+      <button> Metro </button>
       </div>
       {showSearchForm && <SearchForm onSearch={handleSearch} />}
     </div>
