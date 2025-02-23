@@ -1,0 +1,83 @@
+.homepage {
+  text-align: left; /* Align text to the left */
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Stack heading and button group vertically */
+  align-items: flex-start; /* Align content to the left */
+}
+
+.button-group-container {
+  width: 50%; /* Limit the width to the left half of the screen */
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align buttons to the left */
+  margin: 20px 0;
+}
+
+.button {
+  width: 300px; /* Increase button width */
+  padding: 15px 30px; /* Increase button padding */
+  margin: 15px 0; /* Increase margin between buttons */
+  border: 2px solid; /* Outer outline */
+  border-radius: 25px; /* Rounded circular edges */
+  font-size: 18px; /* Increase font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid white; /* Inner outline */
+  border-radius: 25px; /* Match the border-radius of the button */
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* All colours can be found here https://developer.transport.nsw.gov.au/developers/resources */
+.general-search {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border-color: #4CAF50; /* Outer outline color */
+}
+
+.train {
+  background-color: #F99D1C; /* Sydney trains T1 line colour */
+  color: white;
+  border-color: #f37021; /* Outer outline color */
+}
+
+.bus {
+  background-color: #0098cd; /* Buses are blue so there colour should be too */
+  color: white;
+  border-color: #176581; /* Outer outline color */
+}
+
+.light-rail {
+  background-color: #DD1E25 ; /* Light rail Randwick line */
+  color: white;
+  border-color: #BE1622 ; /* Light rail Dulwich hill line */
+}
+
+.ferry {
+  background-color: #5AB031 ; /* Stockton ferry colour */
+  color: white;
+  border-color: #5AB031 ; /* Outer outline color */
+}
+
+.metro {
+  background-color: #168388 ; /* Metro colour */
+  color: white;
+  border-color: #219ea5 ; /* Outer outline color */
+}
+
+.button:hover {
+  opacity: 0.8;
+}
