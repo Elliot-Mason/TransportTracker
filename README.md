@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Train tracking + other public transport tracking
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+RIP ^
 
 ## Running the program
 
@@ -22,7 +24,13 @@ Use: npm run start
 
 To find the id needed for a specific stop see here: https://opendata.transport.nsw.gov.au/data/dataset/trip-planner-apis/resource/97c25c58-a246-4632-bed9-232337cb2f4d?inner_span=True
 
-###
+## Additional packages required
+Also can be found in package-lock.json
+
+- Axios
+- dotenv
+- fuse.js
+- react-router-dom
 
 ## Available Scripts
 
