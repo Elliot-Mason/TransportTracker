@@ -168,12 +168,12 @@ app.get('/api/lightrail', async (req, res) => {
         res.json(lightrail);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Failed to fetch ferry data' });
+        res.status(500).json({ error: 'Failed to fetch lightrail data' });
     }
 });
 
-// API endpoint to fetch train data
-app.get('/api/trains', async (req, res) => {
+// API endpoint to fetch metro data
+app.get('/api/metro', async (req, res) => {
     try {
         const { name_origin, name_destination } = req.query;
 
@@ -218,14 +218,13 @@ app.get('/api/trains', async (req, res) => {
         //console.log('Trips Request URL:', requestUrl);
 
         const response = await axios.get('https://api.transport.nsw.gov.au/v1/tp/trip', requestConfig);
-        const trains = response.data.journeys.slice(0, 5);
-        res.json(trains);
+        const metro = response.data.journeys.slice(0, 5);
+        res.json(metro);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Failed to fetch train data' });
+        res.status(500).json({ error: 'Failed to fetch metro data' });
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+
+
