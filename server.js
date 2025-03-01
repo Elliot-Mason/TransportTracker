@@ -213,9 +213,6 @@ app.get('/api/metro', async (req, res) => {
             }
         };
 
-        // Construct the full request URL
-        const requestUrl = `https://api.transport.nsw.gov.au/v1/tp/trip?${new URLSearchParams(requestConfig.params).toString()}`;
-        //console.log('Trips Request URL:', requestUrl);
 
         const response = await axios.get('https://api.transport.nsw.gov.au/v1/tp/trip', requestConfig);
         const metro = response.data.journeys.slice(0, 5);
