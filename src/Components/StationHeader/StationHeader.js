@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import trainIcon from '../../Assets/trainIcon.png';
 import './StationHeader.css';
 
-const StationHeader = ({ origin, destination, swapStations, color }) => {
+const StationHeader = ({ origin, destination, swapStations }) => {
   const navigate = useNavigate();
 
   return (
-    <nav className="navbar" style={{ backgroundColor: color }}>
+    <nav className="navbar">
       <button onClick={() => navigate('/')} className="home-button">
         Home
       </button>

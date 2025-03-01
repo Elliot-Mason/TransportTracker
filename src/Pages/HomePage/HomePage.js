@@ -7,35 +7,33 @@ const HomePage = () => {
   const navigate = useNavigate();
   const [showSearchForm, setShowSearchForm] = useState(false);
   const [searchType, setSearchType] = useState('');
-  const [headerColor, setHeaderColor] = useState('');
 
   const handleSearch = (originId, destinationId) => {
     let path = '';
     switch (searchType) {
       case 'train':
-        path = `/TrainDepartures?origin=${originId}&destination=${destinationId}&color=${headerColor}`;
+        path = `/TrainDepartures?origin=${originId}&destination=${destinationId}`;
         break;
       case 'bus':
-        path = `/BusDepartures?origin=${originId}&destination=${destinationId}&color=${headerColor}`;
+        path = `/BusDepartures?origin=${originId}&destination=${destinationId}`;
         break;
       case 'light-rail':
-        path = `/LightRailDepartures?origin=${originId}&destination=${destinationId}&color=${headerColor}`;
+        path = `/LightRailDepartures?origin=${originId}&destination=${destinationId}`;
         break;
       case 'ferry':
-        path = `/FerryDepartures?origin=${originId}&destination=${destinationId}&color=${headerColor}`;
+        path = `/FerryDepartures?origin=${originId}&destination=${destinationId}`;
         break;
       case 'metro':
-        path = `/MetroDepartures?origin=${originId}&destination=${destinationId}&color=${headerColor}`;
+        path = `/MetroDepartures?origin=${originId}&destination=${destinationId}`;
         break;
       default:
-        path = `/GeneralSearch?origin=${originId}&destination=${destinationId}&color=${headerColor}`;
+        path = `/GeneralSearch?origin=${originId}&destination=${destinationId}`;
     }
     navigate(path);
   };
 
-  const handleButtonClick = (type, color) => {
+  const handleButtonClick = (type) => {
     setSearchType(type);
-    setHeaderColor(color);
     setShowSearchForm(true);
   };
 
@@ -44,12 +42,12 @@ const HomePage = () => {
       <h1>Welcome to the Transport Departures App</h1>
       <div className="button-group-container">
         <div className="button-group">
-          <button className="button general-search" onClick={() => handleButtonClick('general-search', '#4CAF50')}>General Search</button>
-          <button className="button train" onClick={() => handleButtonClick('train', '#F99D1C')}>Train</button>
-          <button className="button bus" onClick={() => handleButtonClick('bus', '#0098cd')}>Bus</button>
-          <button className="button light-rail" onClick={() => handleButtonClick('light-rail', '#DD1E25')}>LightRail</button>
-          <button className="button ferry" onClick={() => handleButtonClick('ferry', '#5AB031')}>Ferry</button>
-          <button className="button metro" onClick={() => handleButtonClick('metro', '#168388')}>Metro</button>
+          <button className="button general-search" onClick={() => handleButtonClick('general-search')}>General Search</button>
+          <button className="button train" onClick={() => handleButtonClick('train')}>Train</button>
+          <button className="button bus" onClick={() => handleButtonClick('bus')}>Bus</button>
+          <button className="button light-rail" onClick={() => handleButtonClick('light-rail')}>LightRail</button>
+          <button className="button ferry" onClick={() => handleButtonClick('ferry')}>Ferry</button>
+          <button className="button metro" onClick={() => handleButtonClick('metro')}>Metro</button>
         </div>
       </div>
       {showSearchForm && <SearchForm onSearch={handleSearch} />}

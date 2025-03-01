@@ -14,7 +14,6 @@ const MetroDepartures = () => {
   const navigate = useNavigate();
   const origin = query.get('origin');
   const destination = query.get('destination');
-  const color = query.get('color');
   const { metro, error } = useFetchMetro(origin, destination);
 
   const formatDateTime = (dateTime) => {
@@ -37,7 +36,7 @@ const MetroDepartures = () => {
   };
 
   const swapStations = () => {
-    navigate(`/departures?origin=${destination}&destination=${origin}&color=${color}`);
+    navigate(`/departures?origin=${destination}&destination=${origin}`);
   };
 
   return (
@@ -46,7 +45,6 @@ const MetroDepartures = () => {
         origin={metro.length > 0 ? getStationAndPlatform(metro[0].legs[0].origin.name).station : ''}
         destination={metro.length > 0 ? getLastLegDestination(metro[0].legs) : ''}
         swapStations={swapStations}
-        color={color}
       />
       <div style={{ marginTop: '40px' }}></div>
       {error && <p>Error: {error}</p>}
