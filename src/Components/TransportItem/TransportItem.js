@@ -1,6 +1,6 @@
 import React from "react";
 
-const TrainItem = ({ train, formatDateTime, getStationAndPlatform }) => {
+const TransportItem = ({ transport, formatDateTime, getStationAndPlatform }) => {
   const getRouteIcon = (routeType) => {
     const routeMap = {
       T1: "line-T1",
@@ -13,6 +13,7 @@ const TrainItem = ({ train, formatDateTime, getStationAndPlatform }) => {
       T9: "line-T9",
       BMT: "line-Intercity",
       SCO: "line-T4", // Use T4 line CSS for SCO
+      // Add more route types as needed
     };
     return routeMap[routeType] || null;
   };
@@ -20,7 +21,7 @@ const TrainItem = ({ train, formatDateTime, getStationAndPlatform }) => {
   return (
     <li>
       <div className="legs-container">
-        {train.legs.map((leg, index) => {
+        {transport.legs.map((leg, index) => {
           const routeType = leg.transportation.disassembledName;
           const routeIconClass = getRouteIcon(routeType);
 
@@ -49,7 +50,7 @@ const TrainItem = ({ train, formatDateTime, getStationAndPlatform }) => {
                   </div>
                 </div>
               </div>
-              {index < train.legs.length - 1 && (
+              {index < transport.legs.length - 1 && (
                 <div className="transfer-info">
                   <strong>Transfer at:</strong>{" "}
                   {getStationAndPlatform(leg.destination.name).station}
@@ -63,4 +64,4 @@ const TrainItem = ({ train, formatDateTime, getStationAndPlatform }) => {
   );
 };
 
-export default TrainItem;
+export default TransportItem;

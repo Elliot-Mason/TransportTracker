@@ -1,20 +1,21 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './TrainDepartures.css'; // Import the CSS file
+import './MetroDepartures.css'; // Import the CSS file
 import StationHeader from '../../Components/StationHeader/StationHeader';
 import TransportList from '../../Components/TransportList/TransportList';
-import useFetchTrains from '../../Hooks/useFetchTrains';
+import { useFetchMetro } from '../../Hooks/useFetchMetro'; // Use named import
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
 };
 
-const TrainDepartures = () => {
+const MetroDepartures = () => {
   const query = useQuery();
   const navigate = useNavigate();
   const origin = query.get('origin');
   const destination = query.get('destination');
-  const { trains, error } = useFetchTrains(origin, destination);
+  const color = query.get('color');
+  const { metro, error } = useFetchMetro(origin, destination);
 
   const formatDateTime = (dateTime) => {
     const date = new Date(dateTime);
@@ -36,21 +37,22 @@ const TrainDepartures = () => {
   };
 
   const swapStations = () => {
-    navigate(`/departures?origin=${destination}&destination=${origin}`);
+    navigate(`/departures?origin=${destination}&destination=${origin}&color=${color}`);
   };
 
   return (
     <div>
       <StationHeader
-        origin={trains.length > 0 ? getStationAndPlatform(trains[0].legs[0].origin.name).station : ''}
-        destination={trains.length > 0 ? getLastLegDestination(trains[0].legs) : ''}
+        origin={metro.length > 0 ? getStationAndPlatform(metro[0].legs[0].origin.name).station : ''}
+        destination={metro.length > 0 ? getLastLegDestination(metro[0].legs) : ''}
         swapStations={swapStations}
+        color={color}
       />
       <div style={{ marginTop: '40px' }}></div>
       {error && <p>Error: {error}</p>}
-      <TransportList transports={trains} formatDateTime={formatDateTime} getStationAndPlatform={getStationAndPlatform} />
+      <TransportList transports={metro} formatDateTime={formatDateTime} getStationAndPlatform={getStationAndPlatform} />
     </div>
   );
 };
 
-export default TrainDepartures;
+export default MetroDepartures;
