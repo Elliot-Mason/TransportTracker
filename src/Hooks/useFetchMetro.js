@@ -34,4 +34,4 @@ const useFetchMetro = (origin, destination) => {
   return { metro, error };
 };
 
-export { useFetchMetro }; // Ensure named export
+export default useFetchMetro ; // Ensure named export

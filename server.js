@@ -189,7 +189,6 @@ app.get('/api/metro', async (req, res) => {
                 cycleSpeed: 16,
                 excludedMeans: 'checkbox',
                 exclMOT_1:1,
-                exclMOT_2:0,
                 exclMOT_4:1,
                 exclMOT_5:1,
                 exclMOT_7:1,
@@ -197,9 +196,12 @@ app.get('/api/metro', async (req, res) => {
                 exclMOT_11:1
             }
         };
+
         const response = await axios.get('https://api.transport.nsw.gov.au/v1/tp/trip', requestConfig);
-        const metro = response.data.journeys.slice(0, 5);
-        console.log("metro data" + metro);
+
+        console.log(response.data.journeys[0].legs[0].origin.name);
+        //api request is working as expected, something wrong with the slice
+        const metro = response.journeys.slice(0, 5);
         res.json(metro);
     } catch (error) {
         console.error(error);

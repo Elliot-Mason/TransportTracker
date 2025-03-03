@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import './MetroDepartures.css'; // Import the CSS file
 import StationHeader from '../../Components/StationHeader/StationHeader';
 import TransportList from '../../Components/TransportList/TransportList';
-import { useFetchMetro } from '../../Hooks/useFetchMetro'; // Use named import
+import useFetchMetro from '../../Hooks/useFetchMetro'; 
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);
