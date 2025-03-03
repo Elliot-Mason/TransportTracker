@@ -36,7 +36,7 @@ const MetroDepartures = () => {
   };
 
   const swapStations = () => {
-    navigate(`/departures?origin=${destination}&destination=${origin}`);
+    navigate(`/MetroDepartures?origin=${destination}&destination=${origin}`);
   };
 
   return (

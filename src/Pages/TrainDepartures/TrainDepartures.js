@@ -36,7 +36,7 @@ const TrainDepartures = () => {
   };
 
   const swapStations = () => {
-    navigate(`/departures?origin=${destination}&destination=${origin}`);
+    navigate(`/TrainDepartures?origin=${destination}&destination=${origin}`);
   };
 
   return (

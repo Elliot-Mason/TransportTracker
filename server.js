@@ -51,11 +51,6 @@ app.get('/api/trains', async (req, res) => {
                 exclMOT_11:1
             }
         };
-
-        // Construct the full request URL
-        const requestUrl = `https://api.transport.nsw.gov.au/v1/tp/trip?${new URLSearchParams(requestConfig.params).toString()}`;
-        //console.log('Trips Request URL:', requestUrl);
-
         const response = await axios.get('https://api.transport.nsw.gov.au/v1/tp/trip', requestConfig);
         const trains = response.data.journeys.slice(0, 5);
         res.json(trains);
@@ -104,11 +99,6 @@ app.get('/api/ferries', async (req, res) => {
                 exclMOT_11:1
             }
         };
-
-        // Construct the full request URL
-        const requestUrl = `https://api.transport.nsw.gov.au/v1/tp/trip?${new URLSearchParams(requestConfig.params).toString()}`;
-        //console.log('Trips Request URL:', requestUrl);
-
         const response = await axios.get('https://api.transport.nsw.gov.au/v1/tp/trip', requestConfig);
         const ferries = response.data.journeys.slice(0, 5);
         res.json(ferries);
@@ -158,11 +148,6 @@ app.get('/api/lightrail', async (req, res) => {
                 exclMOT_11:1
             }
         };
-
-        // Construct the full request URL
-        const requestUrl = `https://api.transport.nsw.gov.au/v1/tp/trip?${new URLSearchParams(requestConfig.params).toString()}`;
-        //console.log('Trips Request URL:', requestUrl);
-
         const response = await axios.get('https://api.transport.nsw.gov.au/v1/tp/trip', requestConfig);
         const lightrail = response.data.journeys.slice(0, 5);
         res.json(lightrail);
@@ -194,9 +179,9 @@ app.get('/api/metro', async (req, res) => {
                 itdDate: itdDate,
                 itdTime: itdTime,
                 type_origin: 'any',
-                name_origin: name_origin,
+                name_origin: 10101100,
                 type_destination: 'any',
-                name_destination: name_destination,
+                name_destination: 10101117,
                 calcNumberOfTrips: 6,
                 TfNSWTR: true,
                 version: '10.2.1.42',
@@ -212,10 +197,9 @@ app.get('/api/metro', async (req, res) => {
                 exclMOT_11:1
             }
         };
-
-
         const response = await axios.get('https://api.transport.nsw.gov.au/v1/tp/trip', requestConfig);
         const metro = response.data.journeys.slice(0, 5);
+        console.log("metro data" + metro);
         res.json(metro);
     } catch (error) {
         console.error(error);
