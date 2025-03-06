@@ -15,6 +15,7 @@ const useFetchMetro = (origin, destination) => {
       });
       const data = response.data;
       const metroDepartures = data.slice(0, 5);
+      console.log("here");
       setMetro(metroDepartures);
     } catch (error) {
       setError(error.message);

@@ -197,14 +197,22 @@ app.get('/api/metro', async (req, res) => {
             }
         };
 
-        const response = await axios.get('https://api.transport.nsw.gov.au/v1/tp/trip', requestConfig);
+        // Construct the full request URL
+        const requestUrl = `https://api.transport.nsw.gov.au/v1/tp/trip?${new URLSearchParams(requestConfig.params).toString()}`;
+        console.log('Trips Request URL:', requestUrl);
 
-        console.log(response.data.journeys[0].legs[0].origin.name);
-        //api request is working as expected, something wrong with the slice
-        const metro = response.journeys.slice(0, 5);
+        const response = await axios.get(requestUrl, requestConfig);
+        console.log('API Response:', response.data);
+
+        if (!response.data.journeys) {
+            console.error('Journeys property is missing in the API response');
+            return res.status(500).json({ error: 'Journeys property is missing in the API response' });
+        }
+
+        const metro = response.data.journeys.slice(0, 5);
         res.json(metro);
     } catch (error) {
-        console.error(error);
+        console.error('Error fetching metro data:', error);
         res.status(500).json({ error: 'Failed to fetch metro data' });
     }
 });
