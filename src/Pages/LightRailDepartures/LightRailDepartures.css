@@ -1,0 +1,93 @@
+.swap-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .navbar {
+    background-color: #DD1E25;
+  }
+
+  .swap-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  stationHeader {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #168388;
+  }
+  
+  ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+  }
+  
+  li {
+    margin-bottom: 10px; /* Add some space between list items */
+  }
+  
+  hr.solid {
+    border-top: 1px solid #ddd9d9;
+    border-radius: 10px;
+    width: 50%; /* Set the width to 50% */
+    margin: 20px auto; /* Center the divider */
+  }
+  
+  /* Support for future icon implementation */
+  .icon {
+    display: inline-block; /* Allow height and width to take effect */
+    color: white;
+    background: #777;
+    border-radius: 50%; /* Make the icon a circle */
+    border: 2px solid white;
+    height: 32px;
+    width: 32px;
+    text-align: center;
+    line-height: 32px; /* Center the text vertically */
+    font-weight: bold;
+  }
+
+  .sydneytrains.icon.metro {
+    background: #168388;
+  }
+  
+  
+  .legs-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .leg-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    flex: 1;
+  }
+  
+  .icon-container {
+    margin-bottom: 10px; /* Add some space between the icon and the info */
+  }
+  
+  .leg-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .transfer-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0; /* Add some space above and below the transfer info */
+    max-width: 250px; /* Set a maximum width for the transfer info */
+    text-align: center; /* Center the text within the transfer info */
+  }
+  
+  
+  
+  

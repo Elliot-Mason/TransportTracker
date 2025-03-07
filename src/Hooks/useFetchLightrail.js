@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const useFetchLightrail = (origin, destination) => {
-  const [lightrail, setLightrail] = useState([]);
+const useFetchLightRail = (origin, destination) => {
+  const [lightRail, setLightRail] = useState([]);
   const [error, setError] = useState(null);
 
-  const fetchLightrail = async (origin, destination) => {
+  const fetchLightRail = async (origin, destination) => {
     try {
       const response = await axios.get('http://localhost:5000/api/lightrail', {
         params: {
@@ -14,24 +14,24 @@ const useFetchLightrail = (origin, destination) => {
         },
       });
       const data = response.data;
-      const lightrailDepartures = data.slice(0, 5);
-      setLightrail(lightrailDepartures);
+      const lightRailDepartures = data.slice(0, 5);
+      setLightRail(lightRailDepartures);
     } catch (error) {
       setError(error.message);
     }
   };
 
   useEffect(() => {
-    fetchLightrail(origin, destination);
+    fetchLightRail(origin, destination);
 
     const interval = setInterval(() => {
-      fetchLightrail(origin, destination);
+      fetchLightRail(origin, destination);
     }, 60000); // 60000 milliseconds = 1 minute
 
     return () => clearInterval(interval); // Clear interval on component unmount
   }, [origin, destination]);
 
-  return { lightrail, error };
+  return { lightRail, error };
 };
 
-export { useFetchLightrail };
+export { useFetchLightRail };
