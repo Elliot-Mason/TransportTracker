@@ -15,8 +15,10 @@ const useFetchFerries = (origin, destination) => {
       });
       const data = response.data;
       const ferryDepartures = data.slice(0, 5);
+      console.log('Fetched ferry data:', ferryDepartures); // Debugging
       setFerries(ferryDepartures);
     } catch (error) {
+      console.error('Error fetching ferries:', error); // Debugging
       setError(error.message);
     }
   };

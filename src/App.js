@@ -4,6 +4,7 @@ import './App.css';
 import HomePage from './Pages/HomePage/HomePage';
 import TrainDepartures from './Pages/TrainDepartures/TrainDepartures';
 import MetroDepartures from './Pages/MetroDepartures/MetroDepartures';
+import FerryDepartures from './Pages/FerryDepartures/FerryDepartures';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route exact path="/" element={<HomePage />} />
           <Route path="/TrainDepartures" element={<TrainDepartures />} />
           <Route path="/MetroDepartures" element={<MetroDepartures />} />
+          <Route path="/FerryDepartures" element={<FerryDepartures />} />
         </Routes>
       </div>
     </Router>
