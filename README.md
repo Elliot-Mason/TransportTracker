@@ -1,104 +1,86 @@
-# Train tracking + other public transport tracking
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# NSW Transport GTFS React
 
-RIP ^
+This project displays real-time NSW train departure information using data from the Transport for NSW API, visualized in a React frontend. It combines a Node.js backend to fetch GTFS-realtime data with a searchable React interface for users to view live departures.
 
-## Running the program
+## Features
 
-### `.env file`
+- Live train departures for NSW trains
+- Searchable station and route interface using Fuse.js
+- Express backend to handle API requests securely
+- Configurable via .env file
+- React-based frontend with React Router support
 
-You will need to create a .env file in the project's main direcotry and include in it your API key in the format
+## Tech Stack
 
-API_KEY=your api key here
+- **Frontend**: React 19, React Router DOM 7
+- **Backend**: Express, Axios, GTFS (Node.js)
+- **Other**: Fuse.js for fuzzy searching, dotenv for configuration
 
-### `Starting the server`
+## Prerequisites
 
-Use: node server.js
+- Node.js >= 16.x
+- NPM >= 8.x
+- A valid Transport for NSW API key
 
-### `Starting the react app`
+## Setup Instructions
 
-Use: npm run start
+### 1. Clone the repository
 
-### `finding a Station/stop id`
+```bash
+git clone https://github.com/yourusername/nsw-transport-gtfs-react.git
+cd nsw-transport-gtfs-react
+```
 
-To find the id needed for a specific stop see here: https://opendata.transport.nsw.gov.au/data/dataset/trip-planner-apis/resource/97c25c58-a246-4632-bed9-232337cb2f4d?inner_span=True
+### 2. Install dependencies
 
-## Additional packages required
-Also can be found in package-lock.json
+```bash
+npm install
+```
 
-- Axios
-- dotenv
-- fuse.js
-- react-router-dom
+### 3. Create a `.env` file
 
-## Available Scripts
+Create a file called `.env` in the root of the project with the following contents:
 
-In the project directory, you can run:
+```env
+TFNSW_API_KEY=your_api_key_here
+```
 
-### `npm start`
+### 4. Run the project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+npm start
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The app should now be running at [http://localhost:3000](http://localhost:3000).
 
-### `node server.js`
+## Scripts
 
-Runs the server to pull information from the sydney trains API, will run on port 5000
+- `npm start`: Starts the development server
+- `npm build`: Builds the app for production
+- `npm test`: Runs the test suite
+- `npm eject`: Ejects from Create React App
 
-### `npm test`
+## Project Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+.
+├── public/             # Static assets
+├── src/                # React app source code
+│   ├── components/     # React components
+│   ├── api/            # Axios and Express integration
+│   └── App.js          # Main app file
+├── server/             # Express server files (if applicable)
+├── .env                # API keys and configuration
+├── package.json        # Project metadata and dependencies
+└── README.md           # This file
+```
 
-### `npm run build`
+## Notes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- This app is designed to work with GTFS-realtime feeds.
+- Make sure your API key is valid and that you respect rate limits from TfNSW.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## License
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT
