@@ -28,7 +28,7 @@ This project displays real-time NSW train departure information using data from 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/nsw-transport-gtfs-react.git
+git clone https://github.com/Elliot-Mason/TransportTracker.git
 cd nsw-transport-gtfs-react
 ```
 
